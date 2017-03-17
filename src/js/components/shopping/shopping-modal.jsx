@@ -10,15 +10,15 @@ export default class ShoppingModal extends React.Component {
             return (
                 <div className="modal">
                     <div className="modal-inner">
-                        <p>Silmek istediğinizden emin misiniz?</p>
+                        <p>Are you sure to delete this item?</p>
                         <div className="buttons">
                             <button onClick={() => {
                                 this.props.modalProcess('del');
-                            }}>Sil
+                            }}>Delete
                             </button>
                             <button onClick={() => {
                                 this.props.modalProcess();
-                            }}>İptal
+                            }}>Cancel
                             </button>
                         </div>
                     </div>
