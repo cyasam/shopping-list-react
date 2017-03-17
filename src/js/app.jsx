@@ -14,7 +14,7 @@ class ShoppingList extends React.Component {
     }
 
     componentWillMount () {
-        let state = localStorage.getItem('todo');
+        let state = localStorage.getItem('data');
         if (state !== null) {
             state = JSON.parse(state);
             this.setState({ items: state.items });
@@ -23,11 +23,21 @@ class ShoppingList extends React.Component {
 
     _saveData () {
         let state = JSON.stringify(this.state);
-        localStorage.setItem('todo', state);
+        localStorage.setItem('data', state);
+    }
+
+    _createUniqueId () {
+        var s4 = function () {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+        };
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+            s4() + '-' + s4() + s4() + s4();
     }
 
     _addItem (item) {
-        let id = this.state.items.length + 1;
+        let id = this._createUniqueId();
         let itemObj = {};
         itemObj.id = id;
         itemObj.text = item;
