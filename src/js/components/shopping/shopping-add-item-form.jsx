@@ -1,0 +1,30 @@
+import React from 'react';
+
+export default class ShoppingAddItemForm extends React.Component {
+    constructor () {
+        super();
+    }
+
+    _sendShopItem (event) {
+        event.preventDefault();
+
+        let itemVal = this._shopItem.value;
+
+        this.props.addItem(itemVal);
+        this._shopItem.value = '';
+    }
+
+    render () {
+        return (
+            <form onSubmit={this._sendShopItem.bind(this)}>
+                <input type="text" ref={(a) => { this._shopItem = a; }} />
+                <button type="submit">Add</button>
+            </form>
+        );
+    }
+
+}
+
+ShoppingAddItemForm.propTypes = {
+    addItem: React.PropTypes.func.isRequired
+};

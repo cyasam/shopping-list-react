@@ -1,0 +1,18 @@
+{
+  "extends": "react",
+  "globals": {
+    "window": true,
+    "location":true,
+    "__": true,
+    "define": true,
+    "_": true,
+    "navigator": true,
+    "alert": true,
+    "localStorage": true,
+    "document": true,
+    "Modernizr": true,
+    "XMLHttpRequest":true,
+    "console":true,
+    "require":true
+  }
+}
