@@ -31,10 +31,10 @@
     "webpack-dev-server": "latest"
   },
   "scripts": {
-    "dev": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --hot --progress --colors --inline --env development --host 192.168.1.208\"",
-    "build": "webpack -p",
-    "error": "webpack --display-error-details",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --hot --progress --colors --inline --env development --host 0.0.0.0\"",
+    "build:dev": "webpack --config webpack.config.js --progress --colors",
+    "build:prod": "webpack --config webpack.prod.config.js --progress --colors",
+    "error": "webpack --display-error-details"
   },
   "author": "Cagdas ISIK",
   "license": "MIT"
