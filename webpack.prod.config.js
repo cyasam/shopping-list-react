@@ -1,20 +1,22 @@
 'use strict';
 
-var webpack = require('webpack');
-var path = require('path');
-var appConfig = require('./app.config');
-var appDir = path.resolve(__dirname,'./src');
+const webpack = require('webpack');
+const path = require('path');
+const appDir = path.resolve(__dirname,'./src');
+let appConfig = require('./app.config');
 
-var config = {
-    devtool: 'cheap-eval-source-map',
-    entry: appDir + '/js/app.jsx',
+let config = {
+    context: appDir,
+    devtool: 'cheap-module-source-map',
+    entry: {
+        js: appDir + '/js/app.jsx',
+        lib: appConfig.libs
+    },
     output: {
         path: path.resolve(__dirname, 'www/'),
-        filename: 'assets/js/bundle.js'
+        filename: 'assets/js/bundle.[name]'
     },
-    resolve: {
-        extensions: ['.js', '.jsx']
-    },
+    resolve: appConfig.resolve,
     module : {
         rules : [
             appConfig.rules.fontFile,
@@ -31,6 +33,11 @@ var config = {
     },
     plugins: [
         appConfig.ExtractTextPlugin,
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('production')
+            }
+        }),
         new webpack.optimize.UglifyJsPlugin({
             include: /\.js$/,
             minimize: true
@@ -38,8 +45,7 @@ var config = {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'lib',
             filename: 'assets/js/bundle.lib.js',
-            minChunks: Infinity,
-            async: true
+            minChunks: Infinity
         })
     ]
 };

@@ -1,9 +1,11 @@
 'use strict';
 
-var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path');
+const pkg = require('./package.json');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const appDir = path.resolve(__dirname,'./src');
 
-var config = {
+let config = {
     rules : {
         sass: {
             test: /\.scss$/,
@@ -60,9 +62,23 @@ var config = {
                 ]
             })
         }
+    },
+    resolve: {
+        modules:    [
+            'node_modules',
+            'bower_components',
+            appDir
+        ],
+        extensions: ['.js', '.jsx', '.json', '.scss', '.css']
     }
 };
 
 config.ExtractTextPlugin = new ExtractTextPlugin('assets/css/app.css');
+
+config.libs = [];
+
+Object.keys(pkg.dependencies).forEach(item => {
+    return config.libs.push(item);
+});
 
 module.exports = config;

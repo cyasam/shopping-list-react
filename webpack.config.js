@@ -1,20 +1,22 @@
 'use strict';
 
-var webpack = require('webpack');
-var path = require('path');
-var appConfig = require('./app.config');
-var appDir = path.resolve(__dirname,'./src');
+const webpack = require('webpack');
+const path = require('path');
+const appDir = path.resolve(__dirname,'./src');
+let appConfig = require('./app.config');
 
-var config = {
+let config = {
+    context: appDir,
     devtool: 'eval-source-map',
-    entry: appDir + '/js/app.jsx',
+    entry: {
+        js: appDir + '/js/app.jsx',
+        lib: appConfig.libs
+    },
     output: {
         path: path.resolve(__dirname, 'www/'),
-        filename: 'assets/js/bundle.js'
+        filename: 'assets/js/bundle.[name]'
     },
-    resolve: {
-        extensions: ['.js', '.jsx']
-    },
+    resolve: appConfig.resolve,
     module : {
         rules : [
             appConfig.rules.fontUrl,
@@ -29,6 +31,16 @@ var config = {
         historyApiFallback: true
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('development')
+            }
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name:      'lib',
+            filename:  'assets/js/bundle.lib.js',
+            minChunks: Infinity
+        }),
         new webpack.HotModuleReplacementPlugin()
     ]
 };
