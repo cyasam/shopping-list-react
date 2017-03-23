@@ -45,6 +45,16 @@ class ShoppingList extends React.Component {
         this.setState({ items: this.state.items.concat(itemObj) });
     }
 
+    _editItem (value) {
+        let items = this.state.items;
+        let editedIndex = items.findIndex(x => x.id === value.id);
+        items[editedIndex] = value;
+
+        this.setState({
+            items: items
+        });
+    }
+
     _deleteItem (item) {
         var items = this.state.items.filter(function (itm) {
             return item.id !== itm.id;
@@ -60,7 +70,8 @@ class ShoppingList extends React.Component {
                 <div className="shopping-list-wrapper">
                     <div className="shopping-list">
                         <h1>Shopping List</h1>
-                        <ShoppingItems remove={this._deleteItem.bind(this)} itemsList={this.state.items} />
+                        <ShoppingItems editItem={this._editItem.bind(this)}
+                        remove={this._deleteItem.bind(this)} itemsList={this.state.items} />
                     </div>
                 </div>
                 <div className="shopping-form">

@@ -34,20 +34,36 @@ export default class ShoppingItems extends React.Component {
         });
     }
 
+    _closeEditForm () {
+        this.setState({
+            openEdit: false
+        });
+    }
+
+    _editItem (value) {
+        this.props.editItem(value);
+        this.setState({
+            openEdit: false
+        });
+    }
+
     render () {
         let items = this.props.itemsList;
         let rItem = this.state.removeReqItem;
+        let openEdit = this.state.openEdit;
+
         if (items.length > 0) {
             return (
                 <div>
                     <ul>
                         {items.map((item, i) => (
                             <li key={i}>
-                                {item.text}
-                                <ShoppingEditItemForm openEdit={this.state.openEdit} />
+                                { !openEdit ? item.text : '' }
+                                <ShoppingEditItemForm editItem={this._editItem.bind(this)} data={item}
+                                 openEdit={openEdit} closeEdit={this._closeEditForm.bind(this)} />
                                 { this.state.openEdit === false ? (
                                     <div className="buttons">
-                                        <button onClick={() => { this._openEditForm(item); }} type="submit">Edit</button>
+                                        <button onClick={() => { this._openEditForm(item); }}>Edit</button>
                                         <button onClick={() => { this._openModal(item); }}>Delete</button>
                                     </div>
                                 ) : ("")
@@ -71,5 +87,6 @@ export default class ShoppingItems extends React.Component {
 
 ShoppingItems.propTypes = {
     remove: React.PropTypes.func.isRequired,
+    editItem: React.PropTypes.func.isRequired,
     itemsList: React.PropTypes.array.isRequired
 };

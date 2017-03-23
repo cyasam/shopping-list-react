@@ -77,6 +77,8 @@ button {
     margin-bottom: 0;
 
     li {
+      display: flex;
+      align-items: center;
       margin-bottom: 6px;
 
       &:last-child {

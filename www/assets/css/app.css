@@ -93,6 +93,8 @@ button {
 }
 
 .customers ul li {
+  display: flex;
+  align-items: center;
   margin-bottom: 6px;
 }
 
