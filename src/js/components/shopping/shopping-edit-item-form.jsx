@@ -5,42 +5,79 @@ export default class ShoppingEditItemForm extends React.Component {
         super(props);
         this.data = this.props.data;
         this.state = {
-            editedItem: this.data
+            editedItem: this.data,
+            openEdit: false
         };
     }
 
-    _editItem () {
-        this.data.text = this._shopItem.value;
+    _openModal (item) {
+        this.props.removeItem(item);
+    }
+
+    _editItem (item) {
+        this.data.text = item.value;
         this.setState({
-            editedItem: this.data
+            editedItem: this.data,
+            openEdit: false
         });
         this.props.editItem(this.state.editedItem);
     }
 
-    _closeEdit () {
-        this.props.closeEdit();
+    _handleEdit () {
+        let openEdit = null;
+
+        if (this.state.openEdit) {
+            openEdit = false;
+        } else {
+            openEdit = true;
+        }
+
+        this.setState({
+            openEdit: openEdit
+        });
+    }
+
+    _onSubmit (item, e) {
+        this._editItem(item);
+        this._handleEdit();
+        e.preventDefault();
     }
 
     render () {
-        if (this.props.openEdit) {
-            return (
-                <div className="edit-from">
-                    <input defaultValue={this.state.editedItem.text} type="text" ref={(a) => {
-                        this._shopItem = a;
-                    }}/>
-                    <button onClick={() => { this._editItem(this._shopItem); }} type="submit">Save</button>
-                    <button onClick={() => { this._closeEdit(); }} >Cancel</button>
-                </div>
-            );
-        } else {
-            return null;
-        }
+        let editText = this.state.editedItem.text;
+        let openEdit = this.state.openEdit;
+        let item = this.props.data;
+
+        return (
+            <div className="list-item">
+                { openEdit ? (
+                    <div className="edit-form-wrapper">
+                        <form className="edit-form" onSubmit={(e) => { this._onSubmit(this._shopItem, e); }}>
+                            <input defaultValue={editText} type="text" ref={(a) => {
+                                this._shopItem = a;
+                            }}/>
+                            <div className="buttons">
+                                <button type="submit">Save</button>
+                                <button onClick={() => { this._handleEdit(); }} >Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                ) : (
+                    <div className="item">
+                        <p>{ item.text }</p>
+                        <div className="buttons">
+                            <button onClick={() => { this._handleEdit(); }}>Edit</button>
+                            <button onClick={() => { this._openModal(item); }}>Delete</button>
+                        </div>
+                    </div>
+                )}
+            </div>
+        );
     }
 }
 
 ShoppingEditItemForm.propTypes = {
     data: React.PropTypes.object.isRequired,
     editItem: React.PropTypes.func.isRequired,
-    closeEdit: React.PropTypes.func.isRequired,
-    openEdit: React.PropTypes.bool.isRequired
+    removeItem: React.PropTypes.func.isRequired
 };

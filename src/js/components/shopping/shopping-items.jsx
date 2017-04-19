@@ -7,7 +7,6 @@ export default class ShoppingItems extends React.Component {
         super();
         this.state = {
             openModal: false,
-            openEdit: false,
             removeReqItem: ''
         };
     }
@@ -28,29 +27,13 @@ export default class ShoppingItems extends React.Component {
         }
     }
 
-    _openEditForm () {
-        this.setState({
-            openEdit: true
-        });
-    }
-
-    _closeEditForm () {
-        this.setState({
-            openEdit: false
-        });
-    }
-
     _editItem (value) {
         this.props.editItem(value);
-        this.setState({
-            openEdit: false
-        });
     }
 
     render () {
         let items = this.props.itemsList;
         let rItem = this.state.removeReqItem;
-        let openEdit = this.state.openEdit;
 
         if (items.length > 0) {
             return (
@@ -58,16 +41,9 @@ export default class ShoppingItems extends React.Component {
                     <ul>
                         {items.map((item, i) => (
                             <li key={i}>
-                                { !openEdit ? item.text : '' }
-                                <ShoppingEditItemForm editItem={this._editItem.bind(this)} data={item}
-                                 openEdit={openEdit} closeEdit={this._closeEditForm.bind(this)} />
-                                { this.state.openEdit === false ? (
-                                    <div className="buttons">
-                                        <button onClick={() => { this._openEditForm(item); }}>Edit</button>
-                                        <button onClick={() => { this._openModal(item); }}>Delete</button>
-                                    </div>
-                                ) : ("")
-                                }
+                                <ShoppingEditItemForm editItem={this._editItem.bind(this)}
+                                data={item}
+                                removeItem={this._openModal.bind(this)} />
                             </li>
                         ))}
                     </ul>

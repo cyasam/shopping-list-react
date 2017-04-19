@@ -14,7 +14,7 @@ html,body {
 
 body {
   margin: 0;
-  font: 14px/1.2 'Segoe UI';
+  font: 14px/1.2 $font-family;
   color: $color;
 }
 
@@ -22,6 +22,10 @@ input[type="text"]{
   padding: 5px;
   height:30px;
   border:1px solid #CCCCCC;
+  background-color: #f0f0f0;
+  font-family: $font-family;
+  font-size: 14px;
+  color: $color;
 }
 
 button {
@@ -40,10 +44,10 @@ button {
   min-height: 100%;
   padding: 30px;
 
-
   #comment-box {
     display: block;
-    min-width: 300px;
+    width: 100%;
+    max-width: 980px;
   }
 
   .shopping-list-wrapper, .shopping-form {
@@ -63,10 +67,19 @@ button {
   .shopping-form {
     button {
       width: 20%;
+      margin-left: 10px;
     }
 
     input[type="text"] {
-      width: 80%;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+    }
+
+    form {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 
@@ -77,17 +90,84 @@ button {
     margin-bottom: 0;
 
     li {
-      display: flex;
-      align-items: center;
       margin-bottom: 6px;
+      padding: 4px 10px;
+      background-color: #fff;
+      border: 1px solid #CCC;
+      border-radius: 4px;
 
       &:last-child {
         margin-bottom: 0;
       }
     }
 
+    p {
+      margin: 0;
+    }
+
     button {
-      margin-left: 10px;
+      margin-left: 5px;
+    }
+  }
+
+  .list-item {
+    width: 100%;
+
+    .item {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @include media-querry(phone){
+        display: block;
+      }
+
+      p, .buttons {
+        display: inline-block;
+      }
+
+      p {
+        font-size: 14px;
+
+        @include media-querry(phone){
+          width: 100%;
+          padding: 10px 0;
+          font-size: 16px;
+          text-align: center;
+        }
+      }
+
+      .buttons {
+        @include media-querry(phone){
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
+.edit-form-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .edit-form  {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    input[type="text"] {
+      width: 100%;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
     }
   }
 }

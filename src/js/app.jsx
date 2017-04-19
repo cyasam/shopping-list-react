@@ -65,6 +65,7 @@ class ShoppingList extends React.Component {
 
     render () {
         this._saveData();
+
         return (
             <div className="shopping-wrapper">
                 <div className="shopping-list-wrapper">
