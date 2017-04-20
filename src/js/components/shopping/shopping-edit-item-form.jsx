@@ -5,6 +5,7 @@ export default class ShoppingEditItemForm extends React.Component {
     constructor (props) {
         super(props);
         this.data = this.props.data;
+        this.editInputSelector = null;
         this.state = {
             editedItem: this.data,
             openEdit: false
@@ -31,6 +32,14 @@ export default class ShoppingEditItemForm extends React.Component {
             openEdit = false;
         } else {
             openEdit = true;
+
+            window.setTimeout(function () {
+                let editInputSel = document.querySelectorAll('.edit-form input[type="text"]');
+                editInputSel.forEach(function (el) {
+                    el.className = 'open';
+                    el.focus();
+                });
+            }, 10);
         }
 
         this.setState({
@@ -53,22 +62,34 @@ export default class ShoppingEditItemForm extends React.Component {
             <div className="list-item">
                 { openEdit ? (
                     <div className="edit-form-wrapper">
+                        <i className="list-icon icon-checkmark" />
                         <form className="edit-form" onSubmit={(e) => { this._onSubmit(this._shopItem, e); }}>
                             <input defaultValue={editText} type="text" ref={(a) => {
                                 this._shopItem = a;
                             }}/>
                             <div className="buttons">
-                                <button type="submit">Save</button>
-                                <button onClick={() => { this._handleEdit(); }}>Cancel</button>
+                                <button className="btn type-3" type="submit">
+                                    <i className="icon-floppy-disk" />Save
+                                </button>
+                                <button className="btn type-4" onClick={() => { this._handleEdit(); }}>
+                                    <i className="icon-cancel-circle" />Cancel
+                                </button>
                             </div>
                         </form>
                     </div>
                 ) : (
                     <div className="item">
-                        <p onClick={() => { this._handleEdit(); }}>{ item.text }</p>
+                        <div className="item-text" onClick={() => { this._handleEdit(); }} title="Click to edit...">
+                            <i className="list-icon icon-checkmark" />
+                            <p>{ item.text }</p>
+                        </div>
                         <div className="buttons">
-                            <button onClick={() => { this._handleEdit(); }}>Edit</button>
-                            <button onClick={() => { this._openModal(item); }}>Delete</button>
+                            <button className="btn type-3" onClick={() => { this._handleEdit(); }}>
+                                <i className="icon-pencil" />Edit
+                            </button>
+                            <button className="btn type-4" onClick={() => { this._openModal(item); }}>
+                                <i className="icon-bin" />Delete
+                            </button>
                         </div>
                     </div>
                 )}

@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const appDir = path.resolve(__dirname,'./src');
+const outputDir = path.resolve(__dirname,'www/');
 let appConfig = require('./app.config');
 
 let config = {
@@ -14,7 +15,7 @@ let config = {
         lib: appConfig.libs
     },
     output: {
-        path: path.resolve(__dirname, 'www/'),
+        path: outputDir,
         filename: 'assets/js/bundle.[name]'
     },
     resolve: appConfig.resolve,

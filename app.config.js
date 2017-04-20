@@ -46,7 +46,7 @@ let config = {
                 name: '[name].[ext]',
                 limit: 10000,
                 mimetype: 'application/font-woff',
-                outputPath: 'assets/fonts/',
+                outputPath: './assets/fonts/',
                 publicPath: '../fonts/'
             }
         },
@@ -55,7 +55,7 @@ let config = {
             loader: 'file-loader',
             options: {
                 name: '[name].[ext]',
-                outputPath: 'assets/fonts/',
+                outputPath: './assets/fonts/',
                 publicPath: '../fonts/'
             }
         },
@@ -64,7 +64,7 @@ let config = {
             loader: 'file-loader',
             options: {
                 name: '[name].[ext]',
-                outputPath: '../images/',
+                outputPath: './assets/images/',
                 publicPath: '../images/'
             }
         },

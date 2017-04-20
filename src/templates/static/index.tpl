@@ -8,8 +8,8 @@
 <body>
 
 
-<div class="customers">
-    <div id="comment-box"></div>
+<div class="shopping-list-box">
+    <div id="shopping-list"></div>
 </div>
 
 </body>

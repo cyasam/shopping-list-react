@@ -13,11 +13,11 @@ export default class ShoppingModal extends React.Component {
                     <div className="modal-inner">
                         <p>Are you sure to delete this item?</p>
                         <div className="buttons">
-                            <button onClick={() => {
+                            <button className="btn type-1" onClick={() => {
                                 this.props.modalProcess('del');
-                            }}>Delete
+                            }}>Ok
                             </button>
-                            <button onClick={() => {
+                            <button className="btn type-4" onClick={() => {
                                 this.props.modalProcess();
                             }}>Cancel
                             </button>

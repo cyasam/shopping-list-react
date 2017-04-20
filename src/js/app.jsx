@@ -68,9 +68,9 @@ class ShoppingList extends React.Component {
 
         return (
             <div className="shopping-wrapper">
+                <h1>Shopping List</h1>
                 <div className="shopping-list-wrapper">
                     <div className="shopping-list">
-                        <h1>Shopping List</h1>
                         <ShoppingItems editItem={this._editItem.bind(this)}
                         remove={this._deleteItem.bind(this)} itemsList={this.state.items} />
                     </div>
@@ -85,5 +85,5 @@ class ShoppingList extends React.Component {
 
 ReactDOM.render(
     <ShoppingList />,
-    document.getElementById('comment-box')
+    document.getElementById('shopping-list')
 );

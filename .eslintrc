@@ -13,6 +13,10 @@
     "Modernizr": true,
     "XMLHttpRequest":true,
     "console":true,
-    "require":true
+    "require":true,
+    "setTimeout": true
+  },
+  "rules": {
+    "consistent-this": [2, "_this"]
   }
 }
