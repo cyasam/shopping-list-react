@@ -1,8 +1,8 @@
+/* font converted using font-converter.net. thank you! */
+
 @font-face {
-  font-family: "SegoeUI";
-  src: url(assets/fonts/segoeui.eot);
-  /* IE9 Compat Modes */
-  src: url(assets/fonts/segoeui.otf) format("opentype"), url(assets/fonts/segoeui.svg) format("svg"), url(assets/fonts/segoeui.ttf) format("truetype"), url(assets/fonts/segoeui.woff) format("woff");
+  font-family: "OpenSans Regular";
+  src: url(../fonts/OpenSans-Regular.otf) format("opentype"), url(../fonts/OpenSans-Regular.svg) format("svg"), url(../fonts/OpenSans-Regular.ttf) format("truetype"), url(../fonts/OpenSans-Regular.woff) format("woff"), url(../fonts/OpenSans-Regular.woff2) format("woff2");
   /* Modern Browsers */
   font-weight: normal;
   font-style: normal;
@@ -30,7 +30,7 @@ body {
 
 body {
   margin: 0;
-  font: 14px/1.2 'Segoe UI';
+  font: 14px/1.2 "OpenSans Regular", Arial, sans-serif;
   color: #666;
 }
 
@@ -38,6 +38,10 @@ input[type="text"] {
   padding: 5px;
   height: 30px;
   border: 1px solid #CCCCCC;
+  background-color: #f0f0f0;
+  font-family: "OpenSans Regular", Arial, sans-serif;
+  font-size: 14px;
+  color: #666;
 }
 
 button {
@@ -47,6 +51,7 @@ button {
   border: none;
   padding: 5px 10px;
   cursor: pointer;
+  font-family: "OpenSans Regular", Arial, sans-serif;
 }
 
 .customers {
@@ -59,7 +64,8 @@ button {
 
 .customers #comment-box {
   display: block;
-  min-width: 300px;
+  width: 100%;
+  max-width: 980px;
 }
 
 .customers .shopping-list-wrapper,
@@ -79,10 +85,19 @@ button {
 
 .customers .shopping-form button {
   width: 20%;
+  margin-left: 10px;
 }
 
 .customers .shopping-form input[type="text"] {
-  width: 80%;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+.customers .shopping-form form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .customers ul {
@@ -93,17 +108,84 @@ button {
 }
 
 .customers ul li {
-  display: flex;
-  align-items: center;
   margin-bottom: 6px;
+  padding: 4px 10px;
+  background-color: #fff;
+  border: 1px solid #CCC;
+  border-radius: 4px;
 }
 
 .customers ul li:last-child {
   margin-bottom: 0;
 }
 
+.customers ul p {
+  margin: 0;
+}
+
 .customers ul button {
-  margin-left: 10px;
+  margin-left: 5px;
+}
+
+.customers .list-item {
+  width: 100%;
+}
+
+.customers .list-item .item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 767px) {
+  .customers .list-item .item {
+    display: block;
+  }
+}
+
+.customers .list-item .item p {
+  font-size: 14px;
+}
+
+@media (max-width: 767px) {
+  .customers .list-item .item p {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .customers .list-item .item .buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.edit-form-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-form-wrapper .edit-form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-form-wrapper .edit-form input[type="text"] {
+  width: 100%;
+}
+
+.edit-form-wrapper .edit-form .buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .modal {

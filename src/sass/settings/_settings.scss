@@ -1,13 +1,14 @@
 $color: #666;
-$font-family: "SegoeUI", Arial, sans-serif;
+$font-family: "OpenSans Regular", Arial, sans-serif;
 
+/* font converted using font-converter.net. thank you! */
 @font-face {
-  font-family: "SegoeUI";
-  src: url("../fonts/segoeui.eot"); /* IE9 Compat Modes */
-  src: url("../fonts/segoeui.otf") format("opentype"), /* Open Type Font */
-  url("../fonts/segoeui.svg") format("svg"), /* Legacy iOS */
-  url("../fonts/segoeui.ttf") format("truetype"), /* Safari, Android, iOS */
-  url("../fonts/segoeui.woff") format("woff"); /* Modern Browsers */
+  font-family: "OpenSans Regular";
+  src: url("../fonts/OpenSans-Regular.otf") format("opentype"), /* Open Type Font */
+  url("../fonts/OpenSans-Regular.svg") format("svg"), /* Legacy iOS */
+  url("../fonts/OpenSans-Regular.ttf") format("truetype"), /* Safari, Android, iOS */
+  url("../fonts/OpenSans-Regular.woff") format("woff"), /* Modern Browsers */
+  url("../fonts/OpenSans-Regular.woff2") format("woff2"); /* Modern Browsers */
   font-weight: normal;
   font-style: normal;
 }

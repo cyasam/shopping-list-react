@@ -58,13 +58,13 @@ export default class ShoppingEditItemForm extends React.Component {
                             }}/>
                             <div className="buttons">
                                 <button type="submit">Save</button>
-                                <button onClick={() => { this._handleEdit(); }} >Cancel</button>
+                                <button onClick={() => { this._handleEdit(); }}>Cancel</button>
                             </div>
                         </form>
                     </div>
                 ) : (
                     <div className="item">
-                        <p>{ item.text }</p>
+                        <p onClick={() => { this._handleEdit(); }}>{ item.text }</p>
                         <div className="buttons">
                             <button onClick={() => { this._handleEdit(); }}>Edit</button>
                             <button onClick={() => { this._openModal(item); }}>Delete</button>

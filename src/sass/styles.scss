@@ -35,6 +35,7 @@ button {
   border:none;
   padding:5px 10px;
   cursor: pointer;
+  font-family: $font-family;
 }
 
 .customers {
@@ -121,10 +122,6 @@ button {
 
       @include media-querry(phone){
         display: block;
-      }
-
-      p, .buttons {
-        display: inline-block;
       }
 
       p {

@@ -26,21 +26,23 @@ let config = {
             loader: ['babel-loader', 'eslint-loader']
         },
         fontUrl: {
-            test: /\.(eot|otf|svg|ttf|woff|woff2)$/,
+            test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: 'url-loader',
             options: {
-                name: '[name].[ext]',
+                name:       '[name].[ext]',
+                limit:      10000,
+                mimetype:   'application/font-woff',
                 outputPath: 'assets/fonts/',
-                publicPath: 'assets/fonts/'
+                publicPath: '../fonts/'
             }
         },
         fontFile: {
-            test: /\.(eot|otf|svg|ttf|woff|woff2)$/,
+            test: /\.(ttf|otf|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: 'file-loader',
             options: {
                 name: '[name].[ext]',
                 outputPath: 'assets/fonts/',
-                publicPath: 'assets/fonts/'
+                publicPath: '../fonts/'
             }
         },
         images: {
@@ -48,8 +50,8 @@ let config = {
             loader: 'file-loader',
             options: {
                 name: '[name].[ext]',
-                outputPath: 'assets/images/',
-                publicPath: 'assets/images/'
+                outputPath: '../images/',
+                publicPath: '../images/'
             }
         },
         extractCSS: {
