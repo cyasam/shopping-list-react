@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ShoppingModal from '../shopping/shopping-modal';
 import ShoppingEditItemForm from '../shopping/shopping-edit-item-form';
 
@@ -62,7 +63,7 @@ export default class ShoppingItems extends React.Component {
 }
 
 ShoppingItems.propTypes = {
-    remove: React.PropTypes.func.isRequired,
-    editItem: React.PropTypes.func.isRequired,
-    itemsList: React.PropTypes.array.isRequired
+    remove: PropTypes.func.isRequired,
+    editItem: PropTypes.func.isRequired,
+    itemsList: PropTypes.array.isRequired
 };

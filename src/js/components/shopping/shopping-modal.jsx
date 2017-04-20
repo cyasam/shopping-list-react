@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class ShoppingModal extends React.Component {
     constructor () {
@@ -31,6 +32,6 @@ export default class ShoppingModal extends React.Component {
 }
 
 ShoppingModal.propTypes = {
-    modalProcess: React.PropTypes.func,
-    openModal: React.PropTypes.bool.isRequired
+    modalProcess: PropTypes.func,
+    openModal: PropTypes.bool.isRequired
 };

@@ -2,6 +2,7 @@
 
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const appDir = path.resolve(__dirname,'./src');
 let appConfig = require('./app.config');
 
@@ -19,7 +20,8 @@ let config = {
     resolve: appConfig.resolve,
     module : {
         rules : [
-            appConfig.rules.fontUrl,
+            appConfig.rules.html,
+            appConfig.rules.inlineFont,
             appConfig.rules.images,
             appConfig.rules.js,
             appConfig.rules.sass
@@ -31,6 +33,9 @@ let config = {
         historyApiFallback: true
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            template: appDir + '/templates/static/index.tpl'
+        }),
         new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify('development')
@@ -40,8 +45,7 @@ let config = {
             name:      'lib',
             filename:  'assets/js/bundle.lib.js',
             minChunks: Infinity
-        }),
-        new webpack.HotModuleReplacementPlugin()
+        })
     ]
 };
 

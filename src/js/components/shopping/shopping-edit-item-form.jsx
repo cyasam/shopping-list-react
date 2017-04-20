@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class ShoppingEditItemForm extends React.Component {
     constructor (props) {
@@ -77,7 +78,7 @@ export default class ShoppingEditItemForm extends React.Component {
 }
 
 ShoppingEditItemForm.propTypes = {
-    data: React.PropTypes.object.isRequired,
-    editItem: React.PropTypes.func.isRequired,
-    removeItem: React.PropTypes.func.isRequired
+    data: PropTypes.object.isRequired,
+    editItem: PropTypes.func.isRequired,
+    removeItem: PropTypes.func.isRequired
 };

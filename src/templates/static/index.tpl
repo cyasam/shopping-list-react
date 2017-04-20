@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Shopping List - Build by React</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="assets/css/app.css" rel="stylesheet"></head>
+</head>
 <body>
 
 
@@ -12,5 +12,5 @@
     <div id="comment-box"></div>
 </div>
 
-<script type="text/javascript" src="assets/js/bundle.lib.js"></script><script type="text/javascript" src="assets/js/bundle.js"></script></body>
+</body>
 </html>

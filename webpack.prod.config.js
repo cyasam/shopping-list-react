@@ -2,6 +2,7 @@
 
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const appDir = path.resolve(__dirname,'./src');
 let appConfig = require('./app.config');
 
@@ -23,7 +24,8 @@ let config = {
             appConfig.rules.fontUrl,
             appConfig.rules.images,
             appConfig.rules.js,
-            appConfig.rules.extractCSS
+            appConfig.rules.extractCSS,
+            appConfig.rules.html
         ]
     },
     devServer:   {
@@ -32,6 +34,9 @@ let config = {
         historyApiFallback: true
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            template: appDir + '/templates/static/index.tpl'
+        }),
         appConfig.ExtractTextPlugin,
         new webpack.DefinePlugin({
             'process.env': {
@@ -46,7 +51,8 @@ let config = {
             name: 'lib',
             filename: 'assets/js/bundle.lib.js',
             minChunks: Infinity
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin()
     ]
 };
 

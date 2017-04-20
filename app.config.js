@@ -7,6 +7,13 @@ const appDir = path.resolve(__dirname,'./src');
 
 let config = {
     rules : {
+        html:       {
+            test:    /\.tpl?$/i,
+            loader:  'html-loader',
+            options: {
+                attrs: ["img:src", "link:href"]
+            }
+        },
         sass: {
             test: /\.scss$/,
             exclude: '/node_modules/',
@@ -25,13 +32,20 @@ let config = {
             exclude: '/node_modules/',
             loader: ['babel-loader', 'eslint-loader']
         },
+        inlineFont: {
+            test:   /\.(gif|png|jpe?g|svg|woff(2)?|otf|ttf)(\?[a-z0-9=.]+)?$/,
+            loader: 'url-loader',
+            options: {
+                limit: 100000
+            }
+        },
         fontUrl: {
             test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: 'url-loader',
             options: {
-                name:       '[name].[ext]',
-                limit:      10000,
-                mimetype:   'application/font-woff',
+                name: '[name].[ext]',
+                limit: 10000,
+                mimetype: 'application/font-woff',
                 outputPath: 'assets/fonts/',
                 publicPath: '../fonts/'
             }
