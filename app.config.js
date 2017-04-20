@@ -46,16 +46,16 @@ let config = {
                 name: '[name].[ext]',
                 limit: 10000,
                 mimetype: 'application/font-woff',
-                outputPath: './assets/fonts/',
+                outputPath: 'assets/fonts/',
                 publicPath: '../fonts/'
             }
         },
         fontFile: {
-            test: /\.(ttf|otf|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+            test: /\.(ttf|otf|svg|woff(2))(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: 'file-loader',
             options: {
                 name: '[name].[ext]',
-                outputPath: './assets/fonts/',
+                outputPath: 'assets/fonts/',
                 publicPath: '../fonts/'
             }
         },
@@ -64,7 +64,7 @@ let config = {
             loader: 'file-loader',
             options: {
                 name: '[name].[ext]',
-                outputPath: './assets/images/',
+                outputPath: 'assets/images/',
                 publicPath: '../images/'
             }
         },
