@@ -25,7 +25,7 @@ export default class ShoppingEditItemForm extends React.Component {
         this.props.editItem(this.state.editedItem);
     }
 
-    _handleEdit () {
+    _openEditForm () {
         let openEdit = null;
 
         if (this.state.openEdit) {
@@ -49,7 +49,7 @@ export default class ShoppingEditItemForm extends React.Component {
 
     _onSubmit (item, e) {
         this._editItem(item);
-        this._handleEdit();
+        this._openEditForm();
         e.preventDefault();
     }
 
@@ -62,16 +62,18 @@ export default class ShoppingEditItemForm extends React.Component {
             <div className="list-item">
                 { openEdit ? (
                     <div className="edit-form-wrapper">
-                        <i className="list-icon icon-checkmark" />
                         <form className="edit-form" onSubmit={(e) => { this._onSubmit(this._shopItem, e); }}>
-                            <input defaultValue={editText} type="text" ref={(a) => {
-                                this._shopItem = a;
-                            }}/>
+                            <div className="form-item">
+                                <i className="list-icon icon-checkmark" />
+                                <input defaultValue={editText} type="text" ref={(a) => {
+                                    this._shopItem = a;
+                                }}/>
+                            </div>
                             <div className="buttons">
                                 <button className="btn type-3" type="submit">
                                     <i className="icon-floppy-disk" />Save
                                 </button>
-                                <button className="btn type-4" onClick={() => { this._handleEdit(); }}>
+                                <button className="btn type-4" onClick={() => { this._openEditForm(); }}>
                                     <i className="icon-cancel-circle" />Cancel
                                 </button>
                             </div>
@@ -79,12 +81,12 @@ export default class ShoppingEditItemForm extends React.Component {
                     </div>
                 ) : (
                     <div className="item">
-                        <div className="item-text" onClick={() => { this._handleEdit(); }} title="Click to edit...">
+                        <div className="item-text" onClick={() => { this._openEditForm(); }} title="Click to edit...">
                             <i className="list-icon icon-checkmark" />
                             <p>{ item.text }</p>
                         </div>
                         <div className="buttons">
-                            <button className="btn type-3" onClick={() => { this._handleEdit(); }}>
+                            <button className="btn type-3" onClick={() => { this._openEditForm(); }}>
                                 <i className="icon-pencil" />Edit
                             </button>
                             <button className="btn type-4" onClick={() => { this._openModal(item); }}>

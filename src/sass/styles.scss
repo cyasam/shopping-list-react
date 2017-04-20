@@ -7,10 +7,6 @@
 
 html,body {
   height: 100%;
-
-  @include media-querry(phone){
-    height: auto;
-  }
 }
 
 body {
@@ -106,7 +102,6 @@ input[type="text"]{
 
   .shopping-form {
     button {
-      width: 20%;
       margin-left: 10px;
     }
 
@@ -147,6 +142,10 @@ input[type="text"]{
 
     button {
       margin-left: 5px;
+
+      @include media-querry(phone){
+        margin-bottom: 5px;
+      }
     }
   }
 
@@ -167,10 +166,6 @@ input[type="text"]{
       justify-content: space-between;
       align-items: stretch;
 
-      @include media-querry(phone){
-        display: block;
-      }
-
       .item-text {
         width: 100%;
         display: flex;
@@ -178,27 +173,22 @@ input[type="text"]{
         cursor: pointer;
 
         @include media-querry(phone){
-          width: 100%;
           padding: 10px 0;
-          text-align: center;
         }
       }
 
       p {
-        width: 100%;
         font-size: 14px;
-
-        @include media-querry(phone){
-          font-size: 16px;
-        }
       }
 
       .buttons {
         min-width: 150px;
         display: flex;
         justify-content: flex-end;
+
         @include media-querry(phone){
-          width: 100%;
+          min-width: inherit;
+          flex-direction: column;
           justify-content: center;
         }
       }
@@ -216,6 +206,20 @@ input[type="text"]{
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include media-querry(phone){
+      flex-direction: column;
+    }
+
+    .form-item {
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      @include media-querry(phone){
+        margin-bottom: 10px;
+      }
+    }
 
     input[type="text"] {
       width: 100%;

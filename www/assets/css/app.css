@@ -67,13 +67,6 @@ body {
   height: 100%;
 }
 
-@media (max-width: 767px) {
-  html,
-  body {
-    height: auto;
-  }
-}
-
 body {
   margin: 0;
   font: 14px/1.2 "OpenSans Regular", Arial, sans-serif;
@@ -166,7 +159,6 @@ input[type="text"]:focus {
 }
 
 .shopping-list-box .shopping-form button {
-  width: 20%;
   margin-left: 10px;
 }
 
@@ -209,6 +201,12 @@ input[type="text"]:focus {
   margin-left: 5px;
 }
 
+@media (max-width: 767px) {
+  .shopping-list-box ul button {
+    margin-bottom: 5px;
+  }
+}
+
 .shopping-list-box .list-item {
   width: 100%;
 }
@@ -228,12 +226,6 @@ input[type="text"]:focus {
   align-items: stretch;
 }
 
-@media (max-width: 767px) {
-  .shopping-list-box .list-item .item {
-    display: block;
-  }
-}
-
 .shopping-list-box .list-item .item .item-text {
   width: 100%;
   display: flex;
@@ -243,21 +235,12 @@ input[type="text"]:focus {
 
 @media (max-width: 767px) {
   .shopping-list-box .list-item .item .item-text {
-    width: 100%;
     padding: 10px 0;
-    text-align: center;
   }
 }
 
 .shopping-list-box .list-item .item p {
-  width: 100%;
   font-size: 14px;
-}
-
-@media (max-width: 767px) {
-  .shopping-list-box .list-item .item p {
-    font-size: 16px;
-  }
 }
 
 .shopping-list-box .list-item .item .buttons {
@@ -268,7 +251,8 @@ input[type="text"]:focus {
 
 @media (max-width: 767px) {
   .shopping-list-box .list-item .item .buttons {
-    width: 100%;
+    min-width: inherit;
+    flex-direction: column;
     justify-content: center;
   }
 }
@@ -284,6 +268,24 @@ input[type="text"]:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media (max-width: 767px) {
+  .edit-form-wrapper .edit-form {
+    flex-direction: column;
+  }
+}
+
+.edit-form-wrapper .edit-form .form-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 767px) {
+  .edit-form-wrapper .edit-form .form-item {
+    margin-bottom: 10px;
+  }
 }
 
 .edit-form-wrapper .edit-form input[type="text"] {
