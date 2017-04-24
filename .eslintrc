@@ -14,7 +14,8 @@
     "XMLHttpRequest":true,
     "console":true,
     "require":true,
-    "setTimeout": true
+    "setTimeout": true,
+    "Reflect": true
   },
   "rules": {
     "consistent-this": [2, "_this"]

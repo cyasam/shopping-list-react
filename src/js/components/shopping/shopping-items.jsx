@@ -32,6 +32,10 @@ export default class ShoppingItems extends React.Component {
         this.props.editItem(value);
     }
 
+    _openEditForm (id) {
+        this.props.handleOpenEditForm(id);
+    }
+
     render () {
         let items = this.props.itemsList;
         let rItem = this.state.removeReqItem;
@@ -42,9 +46,30 @@ export default class ShoppingItems extends React.Component {
                     <ul>
                         {items.map((item, i) => (
                             <li key={i}>
-                                <ShoppingEditItemForm editItem={this._editItem.bind(this)}
-                                data={item}
-                                removeItem={this._openModal.bind(this)} />
+                                <div className="list-item">
+                                    { !item.openEdit ? (
+                                    <div className="item">
+                                        <div className="item-text" title="Click to edit..."
+                                             onClick={() => { this._openEditForm(item.id); }} >
+                                            <i className="list-icon icon-checkmark" />
+                                            <p>{ item.text }</p>
+                                        </div>
+                                        <div className="buttons">
+                                            <button className="btn type-3"
+                                                    onClick={() => { this._openEditForm(item.id); }}>
+                                                <i className="icon-pencil" />Edit
+                                            </button>
+                                            <button className="btn type-4"
+                                                    onClick={() => { this._openModal(item); }}>
+                                                <i className="icon-bin" />Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                    ) : (null)}
+                                    <ShoppingEditItemForm openEdit={item.openEdit} editItem={this._editItem.bind(this)}
+                                    data={item} handleEditForm={this._openEditForm.bind(this)}
+                                    removeItem={this._openModal.bind(this)} />
+                                </div>
                             </li>
                         ))}
                     </ul>
@@ -65,5 +90,6 @@ export default class ShoppingItems extends React.Component {
 ShoppingItems.propTypes = {
     remove: PropTypes.func.isRequired,
     editItem: PropTypes.func.isRequired,
-    itemsList: PropTypes.array.isRequired
+    itemsList: PropTypes.array.isRequired,
+    handleOpenEditForm: PropTypes.func.isRequired
 };

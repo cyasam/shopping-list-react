@@ -22,7 +22,17 @@ class ShoppingList extends React.Component {
     }
 
     _saveData () {
-        let state = JSON.stringify(this.state);
+        let state = this.state;
+        let items = state.items;
+
+        if (items.length) {
+            console.log("dsa");
+            items.forEach(function (item) {
+                Reflect.deleteProperty(item, 'openEdit');
+            });
+        }
+
+        state = JSON.stringify(state);
         localStorage.setItem('data', state);
     }
 
@@ -41,6 +51,7 @@ class ShoppingList extends React.Component {
         let itemObj = {};
         itemObj.id = id;
         itemObj.text = item;
+        itemObj.openEdit = false;
 
         this.setState({ items: this.state.items.concat(itemObj) });
     }
@@ -49,6 +60,7 @@ class ShoppingList extends React.Component {
         let items = this.state.items;
         let editedIndex = items.findIndex(x => x.id === value.id);
         items[editedIndex] = value;
+        this._openEditForm(value.id);
 
         this.setState({
             items: items
@@ -63,6 +75,29 @@ class ShoppingList extends React.Component {
         this.setState({ items: items });
     }
 
+    _openEditForm (id) {
+        let items = this.state.items;
+        let openEdit = null;
+        let editFormIndex = items.findIndex(x => x.id === id);
+
+        if (this.state.items[editFormIndex].openEdit) {
+            openEdit = false;
+        } else {
+            openEdit = true;
+
+            window.setTimeout(function () {
+                let editInputSel = document.querySelectorAll('.edit-form input[type="text"]');
+                editInputSel.forEach(function (el) {
+                    el.className = 'open';
+                    el.focus();
+                });
+            }, 10);
+        }
+
+        items[editFormIndex].openEdit = openEdit;
+        this.setState({ items: items });
+    }
+
     render () {
         this._saveData();
 
@@ -71,13 +106,13 @@ class ShoppingList extends React.Component {
                 <h1>Shopping List</h1>
                 <div className="shopping-list-wrapper">
                     <div className="shopping-list">
-                        <ShoppingItems editItem={this._editItem.bind(this)}
-                        remove={this._deleteItem.bind(this)} itemsList={this.state.items} />
+                        <ShoppingItems handleOpenEditForm={this._openEditForm.bind(this)}
+                        editItem={this._editItem.bind(this)}
+                        remove={this._deleteItem.bind(this)}
+                        itemsList={this.state.items} />
                     </div>
                 </div>
-                <div className="shopping-form">
-                    <ShoppingAddItemForm addItem={this._addItem.bind(this)} />
-                </div>
+                <ShoppingAddItemForm addItem={this._addItem.bind(this)} />
             </div>
         );
     }

@@ -5,10 +5,8 @@ export default class ShoppingEditItemForm extends React.Component {
     constructor (props) {
         super(props);
         this.data = this.props.data;
-        this.editInputSelector = null;
         this.state = {
-            editedItem: this.data,
-            openEdit: false
+            editedItem: this.data
         };
     }
 
@@ -19,47 +17,27 @@ export default class ShoppingEditItemForm extends React.Component {
     _editItem (item) {
         this.data.text = item.value;
         this.setState({
-            editedItem: this.data,
-            openEdit: false
+            editedItem: this.data
         });
         this.props.editItem(this.state.editedItem);
     }
 
-    _openEditForm () {
-        let openEdit = null;
-
-        if (this.state.openEdit) {
-            openEdit = false;
-        } else {
-            openEdit = true;
-
-            window.setTimeout(function () {
-                let editInputSel = document.querySelectorAll('.edit-form input[type="text"]');
-                editInputSel.forEach(function (el) {
-                    el.className = 'open';
-                    el.focus();
-                });
-            }, 10);
-        }
-
-        this.setState({
-            openEdit: openEdit
-        });
-    }
-
     _onSubmit (item, e) {
         this._editItem(item);
-        this._openEditForm();
         e.preventDefault();
+    }
+
+    _openEditForm (id) {
+        this.props.handleEditForm(id);
     }
 
     render () {
         let editText = this.state.editedItem.text;
-        let openEdit = this.state.openEdit;
-        let item = this.props.data;
+        let openEdit = this.props.openEdit;
+        let editId = this.state.editedItem.id;
 
         return (
-            <div className="list-item">
+            <div>
                 { openEdit ? (
                     <div className="edit-form-wrapper">
                         <form className="edit-form" onSubmit={(e) => { this._onSubmit(this._shopItem, e); }}>
@@ -73,28 +51,13 @@ export default class ShoppingEditItemForm extends React.Component {
                                 <button className="btn type-3" type="submit">
                                     <i className="icon-floppy-disk" />Save
                                 </button>
-                                <button className="btn type-4" onClick={() => { this._openEditForm(); }}>
+                                <button className="btn type-4" onClick={() => { this._openEditForm(editId); }}>
                                     <i className="icon-cancel-circle" />Cancel
                                 </button>
                             </div>
                         </form>
                     </div>
-                ) : (
-                    <div className="item">
-                        <div className="item-text" onClick={() => { this._openEditForm(); }} title="Click to edit...">
-                            <i className="list-icon icon-checkmark" />
-                            <p>{ item.text }</p>
-                        </div>
-                        <div className="buttons">
-                            <button className="btn type-3" onClick={() => { this._openEditForm(); }}>
-                                <i className="icon-pencil" />Edit
-                            </button>
-                            <button className="btn type-4" onClick={() => { this._openModal(item); }}>
-                                <i className="icon-bin" />Delete
-                            </button>
-                        </div>
-                    </div>
-                )}
+                ) : (null)}
             </div>
         );
     }
@@ -103,5 +66,7 @@ export default class ShoppingEditItemForm extends React.Component {
 ShoppingEditItemForm.propTypes = {
     data: PropTypes.object.isRequired,
     editItem: PropTypes.func.isRequired,
-    removeItem: PropTypes.func.isRequired
+    removeItem: PropTypes.func.isRequired,
+    openEdit: PropTypes.bool.isRequired,
+    handleEditForm: PropTypes.func.isRequired
 };
