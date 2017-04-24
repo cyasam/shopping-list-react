@@ -15,23 +15,20 @@ class ShoppingList extends React.Component {
 
     componentWillMount () {
         let state = localStorage.getItem('data');
+
         if (state !== null) {
             state = JSON.parse(state);
-            this.setState({ items: state.items });
+
+            let items = state.items;
+            items.forEach(function (item) {
+                item.openEdit = false;
+            });
+            this.setState({ items: items });
         }
     }
 
     _saveData () {
         let state = this.state;
-        let items = state.items;
-
-        if (items.length) {
-            console.log("dsa");
-            items.forEach(function (item) {
-                Reflect.deleteProperty(item, 'openEdit');
-            });
-        }
-
         state = JSON.stringify(state);
         localStorage.setItem('data', state);
     }
