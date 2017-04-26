@@ -33,7 +33,7 @@ let config = {
             loader: ['babel-loader', 'eslint-loader']
         },
         inlineFont: {
-            test:   /\.(gif|png|jpe?g|svg|woff(2)?|otf|ttf)(\?[a-z0-9=.]+)?$/,
+            test:   /\.(gif|png|jpe?g|svg|woff(2)?|ttf)(\?[a-z0-9=.]+)?$/,
             loader: 'url-loader',
             options: {
                 limit: 100000
@@ -51,7 +51,7 @@ let config = {
             }
         },
         fontFile: {
-            test: /\.(ttf|otf|svg|woff(2))(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+            test: /\.(ttf|svg)$/,
             loader: 'file-loader',
             options: {
                 name: '[name].[ext]',
