@@ -36,6 +36,44 @@ export default class ShoppingItems extends React.Component {
         this.props.handleOpenEditForm(id);
     }
 
+    _getParents (el, parentClass) {
+        var parent = el.parentNode;
+        while (parent !== document.body) {
+            if (parent && (parent.classList.contains(parentClass))) {
+                return parent;
+            } else {
+                parent = parent.parentNode;
+            }
+        }
+        return null;
+    }
+
+    _findChidren (el, childClass) {
+        var children = el.children;
+        for (var i = 0; i < children.length; i++) {
+            if (children[i] && children[i].classList.contains(childClass)) {
+                return children[i];
+            }
+        }
+
+        return null;
+    }
+
+    _openButtons (e) {
+        let toggleButton = e.target;
+        let itemDiv = this._getParents(toggleButton, 'item');
+        let toggleButWrapper = this._findChidren(itemDiv, 'toggle-buttons');
+        let buttons = this._findChidren(itemDiv, 'buttons');
+
+        if (buttons.classList.contains('open')) {
+            buttons.classList.remove('open');
+            toggleButWrapper.classList.remove('active');
+        } else {
+            buttons.classList.add('open');
+            toggleButWrapper.classList.add('active');
+        }
+    }
+
     render () {
         let items = this.props.itemsList;
         let rItem = this.state.removeReqItem;
@@ -54,7 +92,7 @@ export default class ShoppingItems extends React.Component {
                                             <i className="list-icon icon-checkmark" />
                                             <p>{ item.text }</p>
                                         </div>
-                                        <div className="buttons">
+                                        <div className="buttons item-buttons">
                                             <button className="btn type-3"
                                                     onClick={() => { this._openEditForm(item.id); }}>
                                                 <i className="icon-pencil" />Edit
@@ -64,6 +102,9 @@ export default class ShoppingItems extends React.Component {
                                                 <i className="icon-bin" />Delete
                                             </button>
                                         </div>
+                                        <button className="toggle-buttons" onClick={(e) => { this._openButtons(e); }}>
+                                            <i className="icon-circle-left" />
+                                        </button>
                                     </div>
                                     ) : (null)}
                                     <ShoppingEditItemForm openEdit={item.openEdit} editItem={this._editItem.bind(this)}

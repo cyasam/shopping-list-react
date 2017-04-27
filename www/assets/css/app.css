@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: 'icomoon';
-  src: url(../fonts/icomoon-custom.ttf) format("truetype"), url(data:application/font-woff;base64,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) format("woff"), url(../fonts/icomoon-custom.svg#icomoon) format("svg");
+  src: url(../fonts/icomoon-custom.ttf) format("truetype"), url(data:application/font-woff;base64,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) format("woff"), url(../fonts/icomoon-custom.svg#icomoon) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -62,6 +62,10 @@
   content: "\EA10";
 }
 
+.icon-circle-left:before {
+  content: "\EA44";
+}
+
 *,
 *:before,
 *:after {
@@ -75,7 +79,7 @@ body {
 
 body {
   margin: 0;
-  font: 14px/1.2 "Open Sans", Arial, sans-serif;
+  font: 13px/1.2 "Open Sans", Arial, sans-serif;
   color: #333;
 }
 
@@ -84,7 +88,7 @@ input[type="text"] {
   height: 30px;
   border: 1px solid #dedede;
   font-family: "Open Sans", Arial, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   color: #333;
   border-radius: 4px;
   transition: all 0.3s ease;
@@ -106,6 +110,7 @@ input[type="text"]:focus {
   cursor: pointer;
   font-family: "Open Sans", Arial, sans-serif;
   border-radius: 4px;
+  font-size: 13px;
 }
 
 .btn i {
@@ -130,7 +135,7 @@ input[type="text"]:focus {
 .shopping-wrapper h1 {
   padding: 15px 20px;
   margin: 0;
-  font-size: 21px;
+  font-size: 18px;
   background-color: #fff;
   border: 1px solid #dedede;
   border-bottom: none;
@@ -181,7 +186,6 @@ input[type="text"]:focus {
 }
 
 .shopping-list-box ul {
-  font-size: 16px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -189,7 +193,6 @@ input[type="text"]:focus {
 
 .shopping-list-box ul li {
   margin-bottom: 6px;
-  padding: 7px 10px;
   background-color: #fff;
   border: 1px solid #dedede;
   border-radius: 4px;
@@ -203,13 +206,42 @@ input[type="text"]:focus {
   margin: 0;
 }
 
-.shopping-list-box ul button {
+.shopping-list-box ul button,
+.shopping-list-box ul a {
   margin-left: 5px;
 }
 
+.shopping-list-box ul .item-buttons {
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 5px;
+  background-color: #fff;
+  border: 1px solid #dedede;
+  border-radius: 4px;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.shopping-list-box ul .item-buttons.open {
+  visibility: visible;
+  opacity: 1;
+  right: 50px;
+}
+
+.shopping-list-box ul .item-buttons button:first-child {
+  margin-left: 0;
+}
+
 @media (max-width: 767px) {
-  .shopping-list-box ul button {
+  .shopping-list-box ul .item-buttons button {
     margin-bottom: 5px;
+    margin-left: 0;
+  }
+
+  .shopping-list-box ul .item-buttons button:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -226,10 +258,13 @@ input[type="text"]:focus {
 }
 
 .shopping-list-box .list-item .item {
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
+  min-height: 46px;
+  padding: 7px 10px;
 }
 
 .shopping-list-box .list-item .item .item-text {
@@ -245,14 +280,10 @@ input[type="text"]:focus {
   }
 }
 
-.shopping-list-box .list-item .item p {
-  font-size: 14px;
-}
-
 .shopping-list-box .list-item .item .buttons {
-  min-width: 150px;
   display: flex;
   justify-content: flex-end;
+  transition: all 0.3s ease;
 }
 
 @media (max-width: 767px) {
@@ -263,10 +294,41 @@ input[type="text"]:focus {
   }
 }
 
+.shopping-list-box .list-item .item .toggle-buttons {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  width: 35px;
+  padding: 0;
+  border: none;
+  background-color: #fff;
+  color: #333;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.shopping-list-box .list-item .item .toggle-buttons.active {
+  background-color: #333;
+  color: #fff;
+}
+
+.shopping-list-box .list-item .item .toggle-buttons:focus {
+  outline: none;
+}
+
+.shopping-list-box .list-item .item .toggle-buttons i {
+  margin-top: -1px;
+}
+
 .edit-form-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 46px;
+  padding: 7px 10px;
 }
 
 .edit-form-wrapper .edit-form {

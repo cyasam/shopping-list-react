@@ -47,13 +47,13 @@ export default class ShoppingEditItemForm extends React.Component {
                                     this._shopItem = a;
                                 }}/>
                             </div>
-                            <div className="buttons">
+                            <div className="buttons edit-form-buttons">
                                 <button className="btn type-3" type="submit">
                                     <i className="icon-floppy-disk" />Save
                                 </button>
-                                <button className="btn type-4" onClick={() => { this._openEditForm(editId); }}>
+                                <a className="btn type-4" onClick={() => { this._openEditForm(editId); }}>
                                     <i className="icon-cancel-circle" />Cancel
-                                </button>
+                                </a>
                             </div>
                         </form>
                     </div>

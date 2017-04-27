@@ -11,7 +11,7 @@ html,body {
 
 body {
   margin: 0;
-  font: 14px/1.2 $font-family;
+  font: #{$general-font-size}/1.2 $font-family;
   color: $color;
 }
 
@@ -20,7 +20,7 @@ input[type="text"]{
   height:30px;
   border: 1px solid #dedede;
   font-family: $font-family;
-  font-size: 14px;
+  font-size: $general-font-size;
   color: $color;
   border-radius: 4px;
   transition: all 0.3s ease;
@@ -42,6 +42,7 @@ input[type="text"]{
   cursor: pointer;
   font-family: $font-family;
   border-radius: 4px;
+  font-size: $general-font-size;
 
   i {
     margin-right: 5px;
@@ -67,7 +68,7 @@ input[type="text"]{
   h1 {
     padding: 15px $box-padding;
     margin: 0;
-    font-size: 21px;
+    font-size: $general-font-size + 5px;
     background-color: #fff;
     border:1px solid #dedede;
     border-bottom: none;
@@ -119,14 +120,12 @@ input[type="text"]{
   }
 
   ul {
-    font-size: 16px;
     list-style: none;
     padding: 0;
     margin: 0;
 
     li {
       margin-bottom: 6px;
-      padding: 7px 10px;
       background-color: #fff;
       border: 1px solid #dedede;
       border-radius: 4px;
@@ -140,13 +139,43 @@ input[type="text"]{
       margin: 0;
     }
 
-    button {
+    button, a {
       margin-left: 5px;
+    }
 
-      @include media-querry(phone){
-        margin-bottom: 5px;
+    .item-buttons {
+      position: absolute;
+      right: 25px;
+      top:50%;
+      transform: translateY(-50%);
+      padding: 5px;
+      background-color: #fff;
+      border: 1px solid #dedede;
+      border-radius: 4px;
+      visibility: hidden;
+      opacity: 0;
+
+      &.open {
+        visibility: visible;
+        opacity: 1;
+        right: 50px;
+      }
+
+      button {
+        &:first-child {
+          margin-left: 0;
+        }
+        @include media-querry(phone) {
+          margin-bottom: 5px;
+          margin-left: 0;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
       }
     }
+
   }
 
   .list-item {
@@ -161,10 +190,13 @@ input[type="text"]{
     }
 
     .item {
+      position: relative;
       width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: stretch;
+      min-height: 46px;
+      padding: 7px 10px;
 
       .item-text {
         width: 100%;
@@ -177,19 +209,44 @@ input[type="text"]{
         }
       }
 
-      p {
-        font-size: 14px;
-      }
-
       .buttons {
-        min-width: 150px;
         display: flex;
         justify-content: flex-end;
+        transition: all 0.3s ease;
 
         @include media-querry(phone){
           min-width: inherit;
           flex-direction: column;
           justify-content: center;
+        }
+      }
+
+      .toggle-buttons {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        width: 35px;
+        padding: 0;
+        border: none;
+        background-color: #fff;
+        color:#333;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &.active {
+          background-color: #333;
+          color:#fff;
+        }
+
+        &:focus {
+          outline: none;
+        }
+
+        i {
+           margin-top: -1px;
         }
       }
     }
@@ -200,6 +257,8 @@ input[type="text"]{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 46px;
+  padding: 7px 10px;
 
   .edit-form  {
     width: 100%;
