@@ -24,7 +24,10 @@ export default class ShoppingHeader extends React.Component {
 
         setTimeout(function () {
             let headerInput = document.querySelector('.header input[type="text"]');
-            headerInput.classList.toggle('open');
+            if (headerInput) {
+                headerInput.classList.toggle('open');
+                headerInput.focus();
+            }
         }, 10);
     }
 

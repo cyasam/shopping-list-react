@@ -30,6 +30,9 @@ class ShoppingList extends React.Component {
             // Header Control
             let listHeader = (state.listHeader) ? state.listHeader : 'Shopping List';
             this.setState({ listHeader: listHeader });
+        } else {
+            // Header Control
+            this.setState({ listHeader: 'Shopping List' });
         }
     }
 
