@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ShoppingAddItemForm from './components/shopping/shopping-add-item-form';
 import ShoppingItems from './components/shopping/shopping-items';
+import ShoppingHeader from "./components/shopping/shopping-edit-header-form";
 
 require('../sass/styles.scss');
 
@@ -9,6 +10,7 @@ class ShoppingList extends React.Component {
     constructor () {
         super();
         this.state = {
+            listHeader: null,
             items: []
         };
     }
@@ -24,7 +26,15 @@ class ShoppingList extends React.Component {
                 item.openEdit = false;
             });
             this.setState({ items: items });
+
+            // Header Control
+            let listHeader = (state.listHeader) ? state.listHeader : 'Shopping List';
+            this.setState({ listHeader: listHeader });
         }
+    }
+
+    componentDidUpdate () {
+        this._saveData();
     }
 
     _saveData () {
@@ -105,12 +115,16 @@ class ShoppingList extends React.Component {
         this.setState({ items: items });
     }
 
+    _changeListHeader (headerText) {
+        this.setState({ listHeader: headerText });
+    }
+
     render () {
-        this._saveData();
+        let listHeader = this.state.listHeader;
 
         return (
             <div className="shopping-wrapper">
-                <h1>Shopping List</h1>
+                <ShoppingHeader headerText={listHeader} handleHeaderForm={this._changeListHeader.bind(this)}/>
                 <div className="shopping-list-wrapper">
                     <div className="shopping-list">
                         <ShoppingItems handleOpenEditForm={this._openEditForm.bind(this)}

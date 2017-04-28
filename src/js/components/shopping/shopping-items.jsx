@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ShoppingModal from '../shopping/shopping-modal';
 import ShoppingEditItemForm from '../shopping/shopping-edit-item-form';
+import * as lib from '../../general/functions';
 
 export default class ShoppingItems extends React.Component {
     constructor () {
@@ -36,42 +37,16 @@ export default class ShoppingItems extends React.Component {
         this.props.handleOpenEditForm(id);
     }
 
-    _getParents (el, parentClass) {
-        var parent = el.parentNode;
-        while (parent !== document.body) {
-            if (parent && (parent.classList.contains(parentClass))) {
-                return parent;
-            } else {
-                parent = parent.parentNode;
-            }
-        }
-        return null;
-    }
-
-    _findChidren (el, childClass) {
-        var children = el.children;
-        for (var i = 0; i < children.length; i++) {
-            if (children[i] && children[i].classList.contains(childClass)) {
-                return children[i];
-            }
-        }
-
-        return null;
-    }
-
     _openButtons (e) {
         let toggleButton = e.target;
-        let itemDiv = this._getParents(toggleButton, 'item');
-        let toggleButWrapper = this._findChidren(itemDiv, 'toggle-buttons');
-        let buttons = this._findChidren(itemDiv, 'buttons');
+        let itemDiv = lib._getParents(toggleButton, 'item');
+        let toggleButWrapper = lib._findChidren(itemDiv, 'toggle-buttons');
+        let buttons = lib._findChidren(itemDiv, 'buttons');
 
-        if (buttons.classList.contains('open')) {
-            buttons.classList.remove('open');
-            toggleButWrapper.classList.remove('active');
-        } else {
-            buttons.classList.add('open');
-            toggleButWrapper.classList.add('active');
-        }
+        setTimeout(function () {
+            buttons.classList.toggle('open');
+            toggleButWrapper.classList.toggle('active');
+        }, 10);
     }
 
     render () {
