@@ -95,9 +95,7 @@ export default class ShoppingItems extends React.Component {
             );
         } else {
             return (
-                <div>
-                    <p>You don't have any item in your list.</p>
-                </div>
+                <p className="no-item">You don't have any item in your list.</p>
             );
         }
     }
