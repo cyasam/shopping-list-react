@@ -111,7 +111,7 @@ class ShoppingList extends React.Component {
                     editInputSel[i].className = 'open';
                     editInputSel[i].focus();
                 }
-            }, 10);
+            }, 50);
         }
 
         items[editFormIndex].openEdit = openEdit;

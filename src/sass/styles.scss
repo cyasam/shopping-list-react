@@ -81,6 +81,7 @@ input[type="text"]{
 
   h1 {
     margin: 0;
+    cursor: pointer;
   }
 
   .edit-form-wrapper {
@@ -197,7 +198,8 @@ input[type="text"]{
     }
 
     p {
-      margin: 1px 0 0;
+      margin: 0;
+      line-height: 1.4;
     }
 
     button, a {
@@ -255,7 +257,7 @@ input[type="text"]{
       width: 100%;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: stretch;
       min-height: 46px;
       padding: 7px 10px;
 
@@ -341,8 +343,17 @@ input[type="text"]{
       width: 100%;
       padding: 5px 0;
 
+      .header &{
+        font-size: 15px;
+      }
+
       &.open {
         padding: 5px;
+
+        .header &{
+          padding-left: 10px;
+          padding-right: 10px;
+        }
       }
     }
 

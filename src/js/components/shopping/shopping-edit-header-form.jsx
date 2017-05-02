@@ -22,13 +22,13 @@ export default class ShoppingHeader extends React.Component {
             openEdit: openEdit
         });
 
-        setTimeout(function () {
+        window.setTimeout(function () {
             let headerInput = document.querySelector('.header input[type="text"]');
             if (headerInput) {
                 headerInput.classList.toggle('open');
                 headerInput.focus();
             }
-        }, 10);
+        }, 50);
     }
 
     render () {
@@ -39,7 +39,7 @@ export default class ShoppingHeader extends React.Component {
             <div className="header">
                 {!openEdit ? (
                 <div className="header-content">
-                    <h1>{headerText}</h1>
+                    <h1 onClick={() => { this._handleOpenEditForm(); }} title="Click to edit...">{headerText}</h1>
                     <button className="edit-header btn type-2"
                             onClick={() => { this._handleOpenEditForm(); }}>
                         <i className="icon-pencil" />

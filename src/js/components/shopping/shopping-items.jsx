@@ -9,7 +9,7 @@ export default class ShoppingItems extends React.Component {
         super();
         this.state = {
             openModal: false,
-            removeReqItem: ''
+            removeReqItem: {}
         };
     }
 
@@ -43,10 +43,10 @@ export default class ShoppingItems extends React.Component {
         let toggleButWrapper = lib._findChidren(itemDiv, 'toggle-buttons');
         let buttons = lib._findChidren(itemDiv, 'buttons');
 
-        setTimeout(function () {
+        window.setTimeout(function () {
             buttons.classList.toggle('open');
             toggleButWrapper.classList.toggle('active');
-        }, 10);
+        }, 50);
     }
 
     render () {
@@ -89,7 +89,7 @@ export default class ShoppingItems extends React.Component {
                             </li>
                         ))}
                     </ul>
-                    <ShoppingModal openModal={this.state.openModal}
+                    <ShoppingModal openModal={this.state.openModal} removedItem={rItem}
                     modalProcess={(mPType) => this._modalProcess(mPType, rItem)} />
                 </div>
             );
