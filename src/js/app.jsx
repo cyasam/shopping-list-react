@@ -36,8 +36,13 @@ class ShoppingList extends React.Component {
         }
     }
 
+    componentDidMount () {
+        this._itemLoadAnimation();
+    }
+
     componentDidUpdate () {
         this._saveData();
+        this._itemLoadAnimation();
     }
 
     _saveData () {
@@ -88,6 +93,35 @@ class ShoppingList extends React.Component {
         });
 
         this.setState({ items: items });
+    }
+
+    _itemLoadAnimation () {
+        let shopListLi = document.querySelectorAll('.shopping-list li');
+        let _this = this;
+        let n = 0;
+
+        _this.totalDuration = 0;
+        shopListLi.forEach(function (li) {
+            if (!li.classList.contains('open')) {
+                li.style = 'transition-delay:' + (150 * (n + 1)) + 'ms';
+                _this.totalDuration += 150;
+                n++;
+            }
+        });
+
+        setTimeout(function () {
+            shopListLi.forEach(function (li) {
+                if (!li.classList.contains('open')) {
+                    li.classList.add('open');
+                }
+            });
+        }, 100);
+
+        setTimeout(function () {
+            shopListLi.forEach(function (li) {
+                li.style = '';
+            });
+        }, _this.totalDuration);
     }
 
     _openEditForm (id) {

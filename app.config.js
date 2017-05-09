@@ -72,9 +72,9 @@ let config = {
             test: /\.scss?$/i,
             loader: ExtractTextPlugin.extract({
                 loader: [
-                    {loader: 'css-loader', query: {sourceMap: true}},
+                    {loader: 'css-loader', query: {minimize: true}},
                     {loader: 'resolve-url-loader', query: {keepQuery: true}},
-                    {loader: 'sass-loader', query: {sourceMap: true}}
+                    {loader: 'sass-loader'}
                 ]
             })
         }

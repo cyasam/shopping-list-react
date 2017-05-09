@@ -9,7 +9,7 @@ let appConfig = require('./app.config');
 
 let config = {
     context: appDir,
-    devtool: 'cheap-module-source-map',
+    devtool: false,
     entry: {
         js: appDir + '/js/app.jsx',
         lib: appConfig.libs
