@@ -1,7 +1,7 @@
 {
-  "name": "react-try",
+  "name": "shopping-list",
   "version": "1.0.0",
-  "description": "React Try Project",
+  "description": "Shopping List",
   "main": "src/js/app.jsx",
   "dependencies": {
     "react": "^15.4.2",
